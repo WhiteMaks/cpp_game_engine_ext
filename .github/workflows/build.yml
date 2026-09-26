@@ -31,6 +31,14 @@ jobs:
         with:
           cmake-version: '4.2.3'
 
+      - name: Setup GCC
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-14 g++-14
+          echo "CC=gcc-14" >> "$GITHUB_ENV"
+          echo "CXX=g++-14" >> "$GITHUB_ENV"
+
       - name: Configure
         run: >
           cmake
