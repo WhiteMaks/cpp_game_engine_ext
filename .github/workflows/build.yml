@@ -31,20 +31,45 @@ jobs:
         with:
           cmake-version: '4.2.3'
 
-      - name: Setup GCC
-        if: matrix.os == 'ubuntu-latest'
+      - name: Setup Linux
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-14 g++-14
           echo "CC=gcc-14" >> "$GITHUB_ENV"
           echo "CXX=g++-14" >> "$GITHUB_ENV"
 
-      - name: Configure
+      - name: Setup MacOS
+        if: runner.os == 'macOS'
+        run: |
+          sudo xcode-select -s /Applications/Xcode_26.6.app
+
+      - name: Configure Linux
+        if: runner.os == 'Linux'
         run: >
           cmake
           -S .
           -B build
           -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          
+      - name: Configure macOS
+        if: runner.os == 'macOS'
+        run: >
+          cmake
+          -S .
+          -B build
+          -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+          -DCMAKE_CXX_COMPILER=clang++
+          
+      - name: Configure Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: >
+          cmake
+          -S .
+          -B build
+          -G "Visual Studio 18 2026"
+          -A x64
 
       - name: Build
-        run: cmake --build build --config ${{ matrix.config }}
+        run: cmake --build build --config ${{ matrix.config }} --parallel
