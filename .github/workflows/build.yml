@@ -59,7 +59,8 @@ jobs:
           -S .
           -B build
           -DCMAKE_BUILD_TYPE=${{ matrix.config }}
-          -DCMAKE_CXX_COMPILER=clang++
+          -DCMAKE_CXX_COMPILER=g++-14
+          -DCMAKE_CXX_FLAGS="-std=c++2c"
           
       - name: Configure Windows
         if: runner.os == 'Windows'
@@ -68,8 +69,7 @@ jobs:
           cmake
           -S .
           -B build
-          -G "Visual Studio 18 2026"
-          -A x64
+          -DCMAKE_CXX_FLAGS="/std:c++latest"
 
       - name: Build
         run: cmake --build build --config ${{ matrix.config }} --parallel
