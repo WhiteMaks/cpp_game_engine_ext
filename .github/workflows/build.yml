@@ -11,14 +11,30 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
+        include:
+          - os: ubuntu-latest
+            preset: linux
+            config: debug
 
-        config:
-          - Debug
-          - Release
+          - os: ubuntu-24.04
+            preset: linux
+            config: release
+
+          - os: windows-latest
+            preset: windows
+            config: debug
+
+          - os: windows-latest
+            preset: windows
+            config: release
+
+          - os: macos-latest
+            preset: macos
+            config: debug
+
+          - os: macos-latest
+            preset: macos
+            config: release
 
     runs-on: ${{ matrix.os }}
 
@@ -32,11 +48,7 @@ jobs:
           cmake-version: '4.2.3'
 
       - name: Configure
-        run: >
-          cmake
-          -S .
-          -B build
-          -DCMAKE_BUILD_TYPE=${{ matrix.config }}
+        run: cmake --preset ${{ matrix.preset }}-${{ matrix.config}}
 
       - name: Build
-        run: cmake --build build --config ${{ matrix.config }} --parallel
+        run: cmake --build --preset ${{ matrix.preset }}-${{ matrix.config}} --parallel
