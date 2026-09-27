@@ -13,28 +13,28 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            preset: linux
-            config: debug
+            preset: linux-debug
+            config: Debug
 
           - os: ubuntu-latest
-            preset: linux
-            config: release
+            preset: linux-release
+            config: Release
 
           - os: windows-latest
-            preset: windows
-            config: debug
+            preset: windows-debug
+            config: Debug
 
           - os: windows-latest
-            preset: windows
-            config: release
+            preset: windows-release
+            config: Release
 
           - os: macos-latest
-            preset: macos
-            config: debug
+            preset: macos-debug
+            config: Debug
 
           - os: macos-latest
-            preset: macos
-            config: release
+            preset: macos-release
+            config: Release
 
     runs-on: ${{ matrix.os }}
 
@@ -48,10 +48,10 @@ jobs:
           cmake-version: '4.2.3'
 
       - name: Configure
-        run: cmake --preset ${{ matrix.preset }}-${{ matrix.config}}
+        run: cmake --preset ${{ matrix.preset }}
 
       - name: Build
-        run: cmake --build --preset ${{ matrix.preset }}-${{ matrix.config}} --parallel
+        run: cmake --build --preset ${{ matrix.preset }} --parallel
 
       - name: Install
-        run: cmake --install build/${{ matrix.preset }}-${{ matrix.config }}
+        run: cmake --install build/${{ matrix.preset }} --config ${{ matrix.config }}
