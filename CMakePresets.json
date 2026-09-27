@@ -6,6 +6,7 @@
       "displayName": "Linux Debug",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/linux-debug",
+      "installDir": "${sourceDir}/install/linux-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
@@ -15,16 +16,17 @@
       "displayName": "Linux Release",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/linux-release",
+      "installDir": "${sourceDir}/install/linux-release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
-
     {
       "name": "macos-debug",
       "displayName": "macOS Debug",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/macos-debug",
+      "installDir": "${sourceDir}/install/macos-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug"
       }
@@ -34,11 +36,11 @@
       "displayName": "macOS Release",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/macos-release",
+      "installDir": "${sourceDir}/install/macos-release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
     },
-
     {
       "name": "windows-debug",
       "displayName": "Windows Debug",
@@ -47,7 +49,8 @@
         "value": "x64",
         "strategy": "external"
       },
-      "binaryDir": "${sourceDir}/build/windows-debug"
+      "binaryDir": "${sourceDir}/build/windows-debug",
+      "installDir": "${sourceDir}/install/windows-debug"
     },
     {
       "name": "windows-release",
@@ -57,10 +60,10 @@
         "value": "x64",
         "strategy": "external"
       },
-      "binaryDir": "${sourceDir}/build/windows-release"
+      "binaryDir": "${sourceDir}/build/windows-release",
+      "installDir": "${sourceDir}/install/windows-release"
     }
   ],
-
   "buildPresets": [
     {
       "name": "linux-debug",

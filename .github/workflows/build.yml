@@ -16,7 +16,7 @@ jobs:
             preset: linux
             config: debug
 
-          - os: ubuntu-24.04
+          - os: ubuntu-latest
             preset: linux
             config: release
 
@@ -52,3 +52,6 @@ jobs:
 
       - name: Build
         run: cmake --build --preset ${{ matrix.preset }}-${{ matrix.config}} --parallel
+
+      - name: Install
+        run: cmake --install build/${{ matrix.preset }}-${{ matrix.config }}
