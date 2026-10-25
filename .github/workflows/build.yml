@@ -36,16 +36,40 @@ jobs:
             preset: macos-release
             config: Release
 
+          - os: ubuntu-latest
+            preset: web-debug
+            config: Debug
+            emscripten: true
+
+          - os: ubuntu-latest
+            preset: web-release
+            config: Release
+            emscripten: true
+
     runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Setup CMake
         uses: jwlawson/actions-setup-cmake@v2
         with:
           cmake-version: '4.2.3'
+
+      - name: Setup Ninja
+        if: matrix.emscripten
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build
+          
+      - name: Install Emscripten SDK
+        if: matrix.emscripten
+        run: |
+          ./tools/emsdk/emsdk install latest
+          ./tools/emsdk/emsdk activate latest
 
       - name: Configure
         run: cmake --preset ${{ matrix.preset }}

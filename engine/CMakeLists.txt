@@ -7,7 +7,7 @@ set(ENGINE_PUBLIC_INCLUDES
 )
 
 set(ENGINE_PRIVATE_INCLUDES
-		src/platform/desktop/DesktopApplicationHost.h
+		""
 )
 
 set(ENGINE_PRIVATE_SOURCES
@@ -22,9 +22,11 @@ set(ENGINE_PRIVATE_PLATFORM_SOURCES "")
 if(ENGINE_BUILD_ALL_HOSTS)
 	list(APPEND ENGINE_PRIVATE_PLATFORM_INCLUDES
 			src/platform/desktop/DesktopApplicationHost.h
+			src/platform/web/WebApplicationHost.h
 	)
 	list(APPEND ENGINE_PRIVATE_PLATFORM_SOURCES
 			src/platform/desktop/DesktopApplicationHost.cpp
+			src/platform/web/WebApplicationHost.cpp
 	)
 else()
 	if(EMSCRIPTEN)
