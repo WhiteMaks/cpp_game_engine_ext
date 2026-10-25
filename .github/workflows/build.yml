@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build (${{ matrix.os }} / ${{ matrix.config }})
+    name: Build (${{ matrix.preset }})
 
     strategy:
       fail-fast: false
