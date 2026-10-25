@@ -7,6 +7,7 @@
 namespace engine
 {
 	Application::Application() {
+		_shouldClose = false;
 	}
 
 	Application::~Application() {
@@ -16,6 +17,7 @@ namespace engine
 	}
 
 	void Application::input() {
+		_shouldClose = true;
 	}
 
 	void Application::update() {
@@ -25,5 +27,9 @@ namespace engine
 	}
 
 	void Application::shutdown() {
+	}
+
+	bool Application::shouldClose() const {
+		return _shouldClose;
 	}
 }

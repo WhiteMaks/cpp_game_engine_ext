@@ -11,6 +11,9 @@ namespace engine {
 
 		~Application();
 
+	private:
+		bool _shouldClose;
+
 	public:
 		void init();
 
@@ -21,5 +24,7 @@ namespace engine {
 		void render();
 
 		void shutdown();
+
+		bool shouldClose() const;
 	};
 }

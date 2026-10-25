@@ -12,8 +12,7 @@ namespace platform {
 	void DesktopApplicationHost::run() {
 		_application.init();
 
-		//window !should close
-		while (true) {
+		while (!_application.shouldClose()) {
 			_application.input();
 			_application.update();
 			_application.render();
