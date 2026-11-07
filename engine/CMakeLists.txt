@@ -6,6 +6,11 @@ set(ENGINE_PUBLIC_INCLUDES
 		includes/engine/Application.h
 		includes/engine/ApplicationHost.h
 		includes/engine/ApplicationHostFactory.h
+
+		includes/engine/event/Event.h
+		includes/engine/event/KeyboardEvent.h
+		includes/engine/event/MouseEvent.h
+		includes/engine/event/WindowEvent.h
 )
 
 set(ENGINE_PRIVATE_INCLUDES
@@ -18,6 +23,11 @@ set(ENGINE_PRIVATE_SOURCES
 		src/engine/Application.cpp
 		src/engine/ApplicationHost.cpp
 		src/engine/ApplicationHostFactory.cpp
+
+		src/engine/event/Event.cpp
+		src/engine/event/KeyboardEvent.cpp
+		src/engine/event/MouseEvent.cpp
+		src/engine/event/WindowEvent.cpp
 )
 
 set(ENGINE_PRIVATE_PLATFORM_INCLUDES "")
