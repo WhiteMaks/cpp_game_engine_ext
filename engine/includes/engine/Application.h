@@ -4,10 +4,17 @@
 
 #pragma once
 
+#include <memory>
+
+#include <engine/Window.h>
+
 namespace engine {
 	class Application {
+	private:
+		const std::unique_ptr<Window> _window;
+
 	public:
-		Application();
+		explicit Application(std::unique_ptr<Window> window);
 
 		~Application();
 
@@ -23,7 +30,7 @@ namespace engine {
 
 		void render();
 
-		void shutdown();
+		void destroy();
 
 		bool shouldClose() const;
 	};

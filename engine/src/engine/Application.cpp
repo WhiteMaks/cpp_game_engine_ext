@@ -6,7 +6,7 @@
 
 namespace engine
 {
-	Application::Application() {
+	Application::Application(std::unique_ptr<Window> window) : _window(std::move(window)) {
 		_shouldClose = false;
 	}
 
@@ -14,9 +14,11 @@ namespace engine
 	}
 
 	void Application::init() {
+		_window->init();
 	}
 
 	void Application::input() {
+		_window->input();
 		_shouldClose = true;
 	}
 
@@ -26,7 +28,8 @@ namespace engine
 	void Application::render() {
 	}
 
-	void Application::shutdown() {
+	void Application::destroy() {
+		_window->destroy();
 	}
 
 	bool Application::shouldClose() const {

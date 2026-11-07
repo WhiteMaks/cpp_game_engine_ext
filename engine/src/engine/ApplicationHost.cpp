@@ -14,6 +14,6 @@ namespace engine {
 		_application.init();
 		_application.update();
 		_application.render();
-		_application.shutdown();
+		_application.destroy();
 	}
 }

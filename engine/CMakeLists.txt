@@ -1,6 +1,8 @@
 set(ENGINE_PROJECT_NAME engine)
 
 set(ENGINE_PUBLIC_INCLUDES
+		includes/engine/Window.h
+		includes/engine/WindowFactory.h
 		includes/engine/Application.h
 		includes/engine/ApplicationHost.h
 		includes/engine/ApplicationHostFactory.h
@@ -11,6 +13,8 @@ set(ENGINE_PRIVATE_INCLUDES
 )
 
 set(ENGINE_PRIVATE_SOURCES
+		src/engine/Window.cpp
+		src/engine/WindowFactory.cpp
 		src/engine/Application.cpp
 		src/engine/ApplicationHost.cpp
 		src/engine/ApplicationHostFactory.cpp
