@@ -18,6 +18,6 @@ namespace platform {
 			_application.render();
 		}
 
-		_application.shutdown();
+		_application.destroy();
 	}
 }

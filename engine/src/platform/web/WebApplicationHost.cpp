@@ -28,7 +28,7 @@ namespace platform {
 		if (instance->_application.shouldClose())
 		{
 			emscripten_cancel_main_loop();
-			instance->_application.shutdown();
+			instance->_application.destroy();
 			return;
 		}
 
