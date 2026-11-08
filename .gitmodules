@@ -1,3 +1,6 @@
 [submodule ".tools/emsdk"]
 	path = .tools/emsdk
 	url = https://github.com/emscripten-core/emsdk.git
+[submodule ".vendor/sdl3"]
+	path = .vendor/sdl3
+	url = https://github.com/libsdl-org/SDL.git
