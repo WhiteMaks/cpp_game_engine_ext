@@ -9,12 +9,19 @@
 #include <engine/ApplicationHost.h>
 #include <engine/ApplicationHostFactory.h>
 
-int main()
-{
-	std::unique_ptr<engine::Window> window = engine::WindowFactory::create({});
+int main() {
+	engine::WindowDesc window_desc = {
+		.title = "First window",
+		.size = {
+			.width = 1280,
+			.height = 730
+		}
+	};
+	std::unique_ptr<engine::Window> window = engine::WindowFactory::create(window_desc);
 
 	engine::Application application(std::move(window));
-	const std::unique_ptr<engine::ApplicationHost> application_host = engine::ApplicationHostFactory::create(application);
+	const std::unique_ptr<engine::ApplicationHost> application_host =
+			engine::ApplicationHostFactory::create(application);
 	application_host->run();
 
 	return 0;

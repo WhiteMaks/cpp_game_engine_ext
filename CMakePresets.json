@@ -8,7 +8,8 @@
       "binaryDir": "${sourceDir}/build/linux-debug",
       "installDir": "${sourceDir}/install/linux-debug",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "ENGINE_WINDOW_BACKEND": "SDL3"
       }
     },
     {
@@ -18,7 +19,8 @@
       "binaryDir": "${sourceDir}/build/linux-release",
       "installDir": "${sourceDir}/install/linux-release",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "ENGINE_WINDOW_BACKEND": "SDL3"
       }
     },
     {
@@ -71,7 +73,8 @@
       "installDir": "${sourceDir}/install/web-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/.tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/.tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+        "ENGINE_WINDOW_BACKEND": "SDL3"
       }
     },
     {
@@ -82,7 +85,8 @@
       "installDir": "${sourceDir}/install/web-release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/.tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/.tools/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake",
+        "ENGINE_WINDOW_BACKEND": "SDL3"
       }
     }
   ],

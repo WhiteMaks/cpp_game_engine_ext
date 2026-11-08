@@ -33,5 +33,8 @@ namespace engine {
 		void destroy();
 
 		bool shouldClose() const;
+
+	private:
+		void onEvent(const event::Event& event);
 	};
 }
