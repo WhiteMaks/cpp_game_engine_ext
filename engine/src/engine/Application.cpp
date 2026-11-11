@@ -21,6 +21,8 @@ namespace engine
 		);
 
 		_window->init();
+
+		onInit();
 	}
 
 	void Application::input() {
@@ -28,33 +30,72 @@ namespace engine
 	}
 
 	void Application::update() {
+		onUpdate();
 	}
 
 	void Application::render() {
+		onRender();
 	}
 
 	void Application::destroy() {
 		_window->destroy();
+
+		onDestroy();
 	}
 
 	bool Application::shouldClose() const {
 		return _shouldClose;
 	}
 
+	void Application::onInit() {
+	}
+
+	void Application::onUpdate() {
+	}
+
+	void Application::onRender() {
+	}
+
+	void Application::onDestroy() {
+	}
+
 	void Application::onEvent(const event::Event &event) {
-		std::visit([this]<typename T0>(const T0& e) {
-			using T = std::decay_t<T0>;
-
-			if constexpr (std::is_same_v<T, event::WindowClosedEvent>) {
-				_shouldClose = true;
-			}
-			else if constexpr (std::is_same_v<T, event::WindowResizedEvent>) {
-			}
-			else if constexpr (std::is_same_v<T, event::WindowFocusedEvent>) {
-			}
-			else if constexpr (std::is_same_v<T, event::WindowUnfocusedEvent>) {
-			}
-
+		std::visit([this](const auto& e) {
+			onEvent(e);
 		}, event);
+	}
+
+	void Application::onEvent(const event::WindowClosedEvent &event) {
+		_shouldClose = true;
+	}
+
+	void Application::onEvent(const event::WindowResizedEvent &event) {
+	}
+
+	void Application::onEvent(const event::WindowFramebufferResizedEvent &event) {
+	}
+
+	void Application::onEvent(const event::WindowFocusedEvent &event) {
+	}
+
+	void Application::onEvent(const event::WindowUnfocusedEvent &event) {
+	}
+
+	void Application::onEvent(const event::KeyboardButtonPressedEvent &event) {
+	}
+
+	void Application::onEvent(const event::KeyboardButtonReleasedEvent &event) {
+	}
+
+	void Application::onEvent(const event::MouseMovedEvent &event) {
+	}
+
+	void Application::onEvent(const event::MouseButtonPressedEvent &event) {
+	}
+
+	void Application::onEvent(const event::MouseButtonReleasedEvent &event) {
+	}
+
+	void Application::onEvent(const event::MouseScrolledEvent &event) {
 	}
 }

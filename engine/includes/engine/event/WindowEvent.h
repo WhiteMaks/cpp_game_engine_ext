@@ -7,21 +7,22 @@
 #include <cstdint>
 
 namespace event {
-	struct WindowResizedEvent
-	{
+	struct WindowResizedEvent {
 		std::uint32_t width = 0;
 		std::uint32_t height = 0;
 	};
 
-	struct WindowClosedEvent
-	{
+	struct WindowFramebufferResizedEvent {
+		std::uint32_t width = 0;
+		std::uint32_t height = 0;
 	};
 
-	struct WindowFocusedEvent
-	{
+	struct WindowClosedEvent {
 	};
 
-	struct WindowUnfocusedEvent
-	{
+	struct WindowFocusedEvent {
+	};
+
+	struct WindowUnfocusedEvent {
 	};
 }

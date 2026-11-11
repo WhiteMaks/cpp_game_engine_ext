@@ -21,6 +21,7 @@ namespace event {
 		MouseScrolledEvent,
 
 		WindowResizedEvent,
+		WindowFramebufferResizedEvent,
 		WindowClosedEvent,
 		WindowFocusedEvent,
 		WindowUnfocusedEvent

@@ -11,7 +11,7 @@
 namespace platform {
 	class Sdl3Window final : public engine::Window {
 	private:
-		SDL_Window* _window;
+		SDL_Window *_window;
 
 	public:
 		explicit Sdl3Window(const engine::WindowDesc &desc);
@@ -22,5 +22,10 @@ namespace platform {
 		void input() override;
 
 		void destroy() override;
+
+	private:
+		static event::KeyboardButton toEngineKeyboard(SDL_Scancode key);
+
+		static event::MouseButton toEngineMouse(std::uint8_t button);
 	};
 }
