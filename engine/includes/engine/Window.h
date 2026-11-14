@@ -4,7 +4,10 @@
 
 #pragma once
 
+#include <functional>
 #include <string>
+
+#include <engine/event/Event.h>
 
 namespace engine {
 	struct WindowSize {
@@ -17,9 +20,12 @@ namespace engine {
 		WindowSize size;
 	};
 
+	using EventCallback = std::function<void(const event::Event&)>;
+
 	class Window {
-	private:
+	protected:
 		const WindowDesc _desc;
+		EventCallback _eventCallback;
 
 	public:
 		explicit Window(WindowDesc desc);
@@ -32,5 +38,7 @@ namespace engine {
 		virtual void input();
 
 		virtual void destroy();
+
+		void setEventCallback(EventCallback callback);
 	};
 }

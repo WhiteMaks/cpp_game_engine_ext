@@ -18,4 +18,8 @@ namespace engine {
 
 	void Window::destroy() {
 	}
+
+	void Window::setEventCallback(EventCallback callback) {
+		_eventCallback = std::move(callback);
+	}
 }

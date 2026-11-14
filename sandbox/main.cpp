@@ -9,12 +9,45 @@
 #include <engine/ApplicationHost.h>
 #include <engine/ApplicationHostFactory.h>
 
-int main()
-{
-	std::unique_ptr<engine::Window> window = engine::WindowFactory::create({});
+namespace {
+	class SandboxApplication : public engine::Application {
+	public:
+		using Application::Application;
 
-	engine::Application application(std::move(window));
-	const std::unique_ptr<engine::ApplicationHost> application_host = engine::ApplicationHostFactory::create(application);
+	protected:
+		void onInit() override {
+
+		}
+
+		void onUpdate() override {
+
+		}
+
+		void onRender() override {
+
+		}
+
+		void onDestroy() override {
+
+		}
+	};
+}
+
+
+int main() {
+	engine::WindowDesc window_desc = {
+		.title = "First window",
+		.size = {
+			.width = 1280,
+			.height = 720
+		}
+	};
+
+	SandboxApplication application(engine::WindowFactory::create(window_desc));
+
+	auto application_host =
+		engine::ApplicationHostFactory::create(application);
+
 	application_host->run();
 
 	return 0;
