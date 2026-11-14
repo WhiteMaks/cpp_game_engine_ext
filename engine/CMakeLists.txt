@@ -17,6 +17,11 @@ set(ENGINE_PUBLIC_INCLUDES
 		includes/engine/ApplicationHost.h
 		includes/engine/ApplicationHostFactory.h
 
+		includes/engine/input/Keyboard.h
+		includes/engine/input/Mouse.h
+		includes/engine/input/ButtonState.h
+		includes/engine/input/InputSystem.h
+
 		includes/engine/event/Event.h
 		includes/engine/event/KeyboardEvent.h
 		includes/engine/event/MouseEvent.h
@@ -33,6 +38,11 @@ set(ENGINE_PRIVATE_SOURCES
 		src/engine/Application.cpp
 		src/engine/ApplicationHost.cpp
 		src/engine/ApplicationHostFactory.cpp
+
+		src/engine/input/Keyboard.cpp
+		src/engine/input/Mouse.cpp
+		src/engine/input/ButtonState.cpp
+		src/engine/input/InputSystem.cpp
 
 		src/engine/event/Event.cpp
 		src/engine/event/KeyboardEvent.cpp
