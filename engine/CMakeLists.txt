@@ -21,6 +21,7 @@ set(ENGINE_PUBLIC_INCLUDES
 		includes/engine/input/Mouse.h
 		includes/engine/input/ButtonState.h
 		includes/engine/input/InputSystem.h
+		includes/engine/input/InputContex.h
 
 		includes/engine/event/Event.h
 		includes/engine/event/KeyboardEvent.h
@@ -43,6 +44,7 @@ set(ENGINE_PRIVATE_SOURCES
 		src/engine/input/Mouse.cpp
 		src/engine/input/ButtonState.cpp
 		src/engine/input/InputSystem.cpp
+		src/engine/input/InputContex.cpp
 
 		src/engine/event/Event.cpp
 		src/engine/event/KeyboardEvent.cpp
