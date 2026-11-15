@@ -81,7 +81,9 @@ namespace platform {
 				case SDL_EVENT_MOUSE_MOTION:
 					_eventCallback(event::MouseMovedEvent{
 						.x = event.motion.x,
-						.y = event.motion.y
+						.y = event.motion.y,
+						.deltaX = event.motion.xrel,
+						.deltaY = event.motion.yrel,
 					});
 					break;
 

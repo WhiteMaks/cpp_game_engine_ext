@@ -11,6 +11,8 @@ namespace event {
 	{
 		float x = 0.0f;
 		float y = 0.0f;
+		float deltaX = 0.0f;
+		float deltaY = 0.0f;
 	};
 
 	struct MouseButtonPressedEvent
