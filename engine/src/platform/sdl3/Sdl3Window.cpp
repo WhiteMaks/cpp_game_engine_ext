@@ -81,7 +81,9 @@ namespace platform {
 				case SDL_EVENT_MOUSE_MOTION:
 					_eventCallback(event::MouseMovedEvent{
 						.x = event.motion.x,
-						.y = event.motion.y
+						.y = event.motion.y,
+						.deltaX = event.motion.xrel,
+						.deltaY = event.motion.yrel,
 					});
 					break;
 
@@ -125,153 +127,153 @@ namespace platform {
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);
 	}
 
-	event::KeyboardButton Sdl3Window::toEngineKeyboard(SDL_Scancode key) {
+	input::KeyboardButton Sdl3Window::toEngineKeyboard(SDL_Scancode key) {
 		switch (key) {
-			case SDL_SCANCODE_A: return event::KeyboardButton::A;
-			case SDL_SCANCODE_B: return event::KeyboardButton::B;
-			case SDL_SCANCODE_C: return event::KeyboardButton::C;
-			case SDL_SCANCODE_D: return event::KeyboardButton::D;
-			case SDL_SCANCODE_E: return event::KeyboardButton::E;
-			case SDL_SCANCODE_F: return event::KeyboardButton::F;
-			case SDL_SCANCODE_G: return event::KeyboardButton::G;
-			case SDL_SCANCODE_H: return event::KeyboardButton::H;
-			case SDL_SCANCODE_I: return event::KeyboardButton::I;
-			case SDL_SCANCODE_J: return event::KeyboardButton::J;
-			case SDL_SCANCODE_K: return event::KeyboardButton::K;
-			case SDL_SCANCODE_L: return event::KeyboardButton::L;
-			case SDL_SCANCODE_M: return event::KeyboardButton::M;
-			case SDL_SCANCODE_N: return event::KeyboardButton::N;
-			case SDL_SCANCODE_O: return event::KeyboardButton::O;
-			case SDL_SCANCODE_P: return event::KeyboardButton::P;
-			case SDL_SCANCODE_Q: return event::KeyboardButton::Q;
-			case SDL_SCANCODE_R: return event::KeyboardButton::R;
-			case SDL_SCANCODE_S: return event::KeyboardButton::S;
-			case SDL_SCANCODE_T: return event::KeyboardButton::T;
-			case SDL_SCANCODE_U: return event::KeyboardButton::U;
-			case SDL_SCANCODE_V: return event::KeyboardButton::V;
-			case SDL_SCANCODE_W: return event::KeyboardButton::W;
-			case SDL_SCANCODE_X: return event::KeyboardButton::X;
-			case SDL_SCANCODE_Y: return event::KeyboardButton::Y;
-			case SDL_SCANCODE_Z: return event::KeyboardButton::Z;
+			case SDL_SCANCODE_A: return input::KeyboardButton::A;
+			case SDL_SCANCODE_B: return input::KeyboardButton::B;
+			case SDL_SCANCODE_C: return input::KeyboardButton::C;
+			case SDL_SCANCODE_D: return input::KeyboardButton::D;
+			case SDL_SCANCODE_E: return input::KeyboardButton::E;
+			case SDL_SCANCODE_F: return input::KeyboardButton::F;
+			case SDL_SCANCODE_G: return input::KeyboardButton::G;
+			case SDL_SCANCODE_H: return input::KeyboardButton::H;
+			case SDL_SCANCODE_I: return input::KeyboardButton::I;
+			case SDL_SCANCODE_J: return input::KeyboardButton::J;
+			case SDL_SCANCODE_K: return input::KeyboardButton::K;
+			case SDL_SCANCODE_L: return input::KeyboardButton::L;
+			case SDL_SCANCODE_M: return input::KeyboardButton::M;
+			case SDL_SCANCODE_N: return input::KeyboardButton::N;
+			case SDL_SCANCODE_O: return input::KeyboardButton::O;
+			case SDL_SCANCODE_P: return input::KeyboardButton::P;
+			case SDL_SCANCODE_Q: return input::KeyboardButton::Q;
+			case SDL_SCANCODE_R: return input::KeyboardButton::R;
+			case SDL_SCANCODE_S: return input::KeyboardButton::S;
+			case SDL_SCANCODE_T: return input::KeyboardButton::T;
+			case SDL_SCANCODE_U: return input::KeyboardButton::U;
+			case SDL_SCANCODE_V: return input::KeyboardButton::V;
+			case SDL_SCANCODE_W: return input::KeyboardButton::W;
+			case SDL_SCANCODE_X: return input::KeyboardButton::X;
+			case SDL_SCANCODE_Y: return input::KeyboardButton::Y;
+			case SDL_SCANCODE_Z: return input::KeyboardButton::Z;
 
-			case SDL_SCANCODE_1: return event::KeyboardButton::D1;
-			case SDL_SCANCODE_2: return event::KeyboardButton::D2;
-			case SDL_SCANCODE_3: return event::KeyboardButton::D3;
-			case SDL_SCANCODE_4: return event::KeyboardButton::D4;
-			case SDL_SCANCODE_5: return event::KeyboardButton::D5;
-			case SDL_SCANCODE_6: return event::KeyboardButton::D6;
-			case SDL_SCANCODE_7: return event::KeyboardButton::D7;
-			case SDL_SCANCODE_8: return event::KeyboardButton::D8;
-			case SDL_SCANCODE_9: return event::KeyboardButton::D9;
-			case SDL_SCANCODE_0: return event::KeyboardButton::D0;
+			case SDL_SCANCODE_1: return input::KeyboardButton::D1;
+			case SDL_SCANCODE_2: return input::KeyboardButton::D2;
+			case SDL_SCANCODE_3: return input::KeyboardButton::D3;
+			case SDL_SCANCODE_4: return input::KeyboardButton::D4;
+			case SDL_SCANCODE_5: return input::KeyboardButton::D5;
+			case SDL_SCANCODE_6: return input::KeyboardButton::D6;
+			case SDL_SCANCODE_7: return input::KeyboardButton::D7;
+			case SDL_SCANCODE_8: return input::KeyboardButton::D8;
+			case SDL_SCANCODE_9: return input::KeyboardButton::D9;
+			case SDL_SCANCODE_0: return input::KeyboardButton::D0;
 
-			case SDL_SCANCODE_F1: return event::KeyboardButton::F1;
-			case SDL_SCANCODE_F2: return event::KeyboardButton::F2;
-			case SDL_SCANCODE_F3: return event::KeyboardButton::F3;
-			case SDL_SCANCODE_F4: return event::KeyboardButton::F4;
-			case SDL_SCANCODE_F5: return event::KeyboardButton::F5;
-			case SDL_SCANCODE_F6: return event::KeyboardButton::F6;
-			case SDL_SCANCODE_F7: return event::KeyboardButton::F7;
-			case SDL_SCANCODE_F8: return event::KeyboardButton::F8;
-			case SDL_SCANCODE_F9: return event::KeyboardButton::F9;
-			case SDL_SCANCODE_F10: return event::KeyboardButton::F10;
-			case SDL_SCANCODE_F11: return event::KeyboardButton::F11;
-			case SDL_SCANCODE_F12: return event::KeyboardButton::F12;
-			case SDL_SCANCODE_F13: return event::KeyboardButton::F13;
-			case SDL_SCANCODE_F14: return event::KeyboardButton::F14;
-			case SDL_SCANCODE_F15: return event::KeyboardButton::F15;
-			case SDL_SCANCODE_F16: return event::KeyboardButton::F16;
-			case SDL_SCANCODE_F17: return event::KeyboardButton::F17;
-			case SDL_SCANCODE_F18: return event::KeyboardButton::F18;
-			case SDL_SCANCODE_F19: return event::KeyboardButton::F19;
-			case SDL_SCANCODE_F20: return event::KeyboardButton::F20;
-			case SDL_SCANCODE_F21: return event::KeyboardButton::F21;
-			case SDL_SCANCODE_F22: return event::KeyboardButton::F22;
-			case SDL_SCANCODE_F23: return event::KeyboardButton::F23;
-			case SDL_SCANCODE_F24: return event::KeyboardButton::F24;
+			case SDL_SCANCODE_F1: return input::KeyboardButton::F1;
+			case SDL_SCANCODE_F2: return input::KeyboardButton::F2;
+			case SDL_SCANCODE_F3: return input::KeyboardButton::F3;
+			case SDL_SCANCODE_F4: return input::KeyboardButton::F4;
+			case SDL_SCANCODE_F5: return input::KeyboardButton::F5;
+			case SDL_SCANCODE_F6: return input::KeyboardButton::F6;
+			case SDL_SCANCODE_F7: return input::KeyboardButton::F7;
+			case SDL_SCANCODE_F8: return input::KeyboardButton::F8;
+			case SDL_SCANCODE_F9: return input::KeyboardButton::F9;
+			case SDL_SCANCODE_F10: return input::KeyboardButton::F10;
+			case SDL_SCANCODE_F11: return input::KeyboardButton::F11;
+			case SDL_SCANCODE_F12: return input::KeyboardButton::F12;
+			case SDL_SCANCODE_F13: return input::KeyboardButton::F13;
+			case SDL_SCANCODE_F14: return input::KeyboardButton::F14;
+			case SDL_SCANCODE_F15: return input::KeyboardButton::F15;
+			case SDL_SCANCODE_F16: return input::KeyboardButton::F16;
+			case SDL_SCANCODE_F17: return input::KeyboardButton::F17;
+			case SDL_SCANCODE_F18: return input::KeyboardButton::F18;
+			case SDL_SCANCODE_F19: return input::KeyboardButton::F19;
+			case SDL_SCANCODE_F20: return input::KeyboardButton::F20;
+			case SDL_SCANCODE_F21: return input::KeyboardButton::F21;
+			case SDL_SCANCODE_F22: return input::KeyboardButton::F22;
+			case SDL_SCANCODE_F23: return input::KeyboardButton::F23;
+			case SDL_SCANCODE_F24: return input::KeyboardButton::F24;
 
-			case SDL_SCANCODE_GRAVE: return event::KeyboardButton::Grave;
-			case SDL_SCANCODE_MINUS: return event::KeyboardButton::Minus;
-			case SDL_SCANCODE_EQUALS: return event::KeyboardButton::Equal;
-			case SDL_SCANCODE_LEFTBRACKET: return event::KeyboardButton::LeftBracket;
-			case SDL_SCANCODE_RIGHTBRACKET: return event::KeyboardButton::RightBracket;
-			case SDL_SCANCODE_BACKSLASH: return event::KeyboardButton::Backslash;
-			case SDL_SCANCODE_SEMICOLON: return event::KeyboardButton::Semicolon;
-			case SDL_SCANCODE_APOSTROPHE: return event::KeyboardButton::Apostrophe;
-			case SDL_SCANCODE_COMMA: return event::KeyboardButton::Comma;
-			case SDL_SCANCODE_PERIOD: return event::KeyboardButton::Period;
-			case SDL_SCANCODE_SLASH: return event::KeyboardButton::Slash;
+			case SDL_SCANCODE_GRAVE: return input::KeyboardButton::Grave;
+			case SDL_SCANCODE_MINUS: return input::KeyboardButton::Minus;
+			case SDL_SCANCODE_EQUALS: return input::KeyboardButton::Equal;
+			case SDL_SCANCODE_LEFTBRACKET: return input::KeyboardButton::LeftBracket;
+			case SDL_SCANCODE_RIGHTBRACKET: return input::KeyboardButton::RightBracket;
+			case SDL_SCANCODE_BACKSLASH: return input::KeyboardButton::Backslash;
+			case SDL_SCANCODE_SEMICOLON: return input::KeyboardButton::Semicolon;
+			case SDL_SCANCODE_APOSTROPHE: return input::KeyboardButton::Apostrophe;
+			case SDL_SCANCODE_COMMA: return input::KeyboardButton::Comma;
+			case SDL_SCANCODE_PERIOD: return input::KeyboardButton::Period;
+			case SDL_SCANCODE_SLASH: return input::KeyboardButton::Slash;
 
-			case SDL_SCANCODE_LSHIFT: return event::KeyboardButton::LeftShift;
-			case SDL_SCANCODE_RSHIFT: return event::KeyboardButton::RightShift;
-			case SDL_SCANCODE_LCTRL: return event::KeyboardButton::LeftControl;
-			case SDL_SCANCODE_RCTRL: return event::KeyboardButton::RightControl;
-			case SDL_SCANCODE_LALT: return event::KeyboardButton::LeftAlt;
-			case SDL_SCANCODE_RALT: return event::KeyboardButton::RightAlt;
-			case SDL_SCANCODE_LGUI: return event::KeyboardButton::LeftSuper;
-			case SDL_SCANCODE_RGUI: return event::KeyboardButton::RightSuper;
+			case SDL_SCANCODE_LSHIFT: return input::KeyboardButton::LeftShift;
+			case SDL_SCANCODE_RSHIFT: return input::KeyboardButton::RightShift;
+			case SDL_SCANCODE_LCTRL: return input::KeyboardButton::LeftControl;
+			case SDL_SCANCODE_RCTRL: return input::KeyboardButton::RightControl;
+			case SDL_SCANCODE_LALT: return input::KeyboardButton::LeftAlt;
+			case SDL_SCANCODE_RALT: return input::KeyboardButton::RightAlt;
+			case SDL_SCANCODE_LGUI: return input::KeyboardButton::LeftSuper;
+			case SDL_SCANCODE_RGUI: return input::KeyboardButton::RightSuper;
 
-			case SDL_SCANCODE_SPACE: return event::KeyboardButton::Space;
-			case SDL_SCANCODE_ESCAPE: return event::KeyboardButton::Escape;
-			case SDL_SCANCODE_RETURN: return event::KeyboardButton::Enter;
-			case SDL_SCANCODE_TAB: return event::KeyboardButton::Tab;
-			case SDL_SCANCODE_BACKSPACE: return event::KeyboardButton::Backspace;
-			case SDL_SCANCODE_CAPSLOCK: return event::KeyboardButton::CapsLock;
+			case SDL_SCANCODE_SPACE: return input::KeyboardButton::Space;
+			case SDL_SCANCODE_ESCAPE: return input::KeyboardButton::Escape;
+			case SDL_SCANCODE_RETURN: return input::KeyboardButton::Enter;
+			case SDL_SCANCODE_TAB: return input::KeyboardButton::Tab;
+			case SDL_SCANCODE_BACKSPACE: return input::KeyboardButton::Backspace;
+			case SDL_SCANCODE_CAPSLOCK: return input::KeyboardButton::CapsLock;
 
-			case SDL_SCANCODE_INSERT: return event::KeyboardButton::Insert;
-			case SDL_SCANCODE_DELETE: return event::KeyboardButton::Delete;
-			case SDL_SCANCODE_HOME: return event::KeyboardButton::Home;
-			case SDL_SCANCODE_END: return event::KeyboardButton::End;
-			case SDL_SCANCODE_PAGEUP: return event::KeyboardButton::PageUp;
-			case SDL_SCANCODE_PAGEDOWN: return event::KeyboardButton::PageDown;
+			case SDL_SCANCODE_INSERT: return input::KeyboardButton::Insert;
+			case SDL_SCANCODE_DELETE: return input::KeyboardButton::Delete;
+			case SDL_SCANCODE_HOME: return input::KeyboardButton::Home;
+			case SDL_SCANCODE_END: return input::KeyboardButton::End;
+			case SDL_SCANCODE_PAGEUP: return input::KeyboardButton::PageUp;
+			case SDL_SCANCODE_PAGEDOWN: return input::KeyboardButton::PageDown;
 
-			case SDL_SCANCODE_UP: return event::KeyboardButton::Up;
-			case SDL_SCANCODE_DOWN: return event::KeyboardButton::Down;
-			case SDL_SCANCODE_LEFT: return event::KeyboardButton::Left;
-			case SDL_SCANCODE_RIGHT: return event::KeyboardButton::Right;
+			case SDL_SCANCODE_UP: return input::KeyboardButton::Up;
+			case SDL_SCANCODE_DOWN: return input::KeyboardButton::Down;
+			case SDL_SCANCODE_LEFT: return input::KeyboardButton::Left;
+			case SDL_SCANCODE_RIGHT: return input::KeyboardButton::Right;
 
-			case SDL_SCANCODE_NUMLOCKCLEAR: return event::KeyboardButton::NumLock;
-			case SDL_SCANCODE_KP_0: return event::KeyboardButton::Keypad0;
-			case SDL_SCANCODE_KP_1: return event::KeyboardButton::Keypad1;
-			case SDL_SCANCODE_KP_2: return event::KeyboardButton::Keypad2;
-			case SDL_SCANCODE_KP_3: return event::KeyboardButton::Keypad3;
-			case SDL_SCANCODE_KP_4: return event::KeyboardButton::Keypad4;
-			case SDL_SCANCODE_KP_5: return event::KeyboardButton::Keypad5;
-			case SDL_SCANCODE_KP_6: return event::KeyboardButton::Keypad6;
-			case SDL_SCANCODE_KP_7: return event::KeyboardButton::Keypad7;
-			case SDL_SCANCODE_KP_8: return event::KeyboardButton::Keypad8;
-			case SDL_SCANCODE_KP_9: return event::KeyboardButton::Keypad9;
-			case SDL_SCANCODE_KP_DECIMAL: return event::KeyboardButton::KeypadDecimal;
-			case SDL_SCANCODE_KP_DIVIDE: return event::KeyboardButton::KeypadDivide;
-			case SDL_SCANCODE_KP_MULTIPLY: return event::KeyboardButton::KeypadMultiply;
-			case SDL_SCANCODE_KP_MINUS: return event::KeyboardButton::KeypadSubtract;
-			case SDL_SCANCODE_KP_PLUS: return event::KeyboardButton::KeypadAdd;
-			case SDL_SCANCODE_KP_ENTER: return event::KeyboardButton::KeypadEnter;
-			case SDL_SCANCODE_KP_EQUALS: return event::KeyboardButton::KeypadEqual;
+			case SDL_SCANCODE_NUMLOCKCLEAR: return input::KeyboardButton::NumLock;
+			case SDL_SCANCODE_KP_0: return input::KeyboardButton::Keypad0;
+			case SDL_SCANCODE_KP_1: return input::KeyboardButton::Keypad1;
+			case SDL_SCANCODE_KP_2: return input::KeyboardButton::Keypad2;
+			case SDL_SCANCODE_KP_3: return input::KeyboardButton::Keypad3;
+			case SDL_SCANCODE_KP_4: return input::KeyboardButton::Keypad4;
+			case SDL_SCANCODE_KP_5: return input::KeyboardButton::Keypad5;
+			case SDL_SCANCODE_KP_6: return input::KeyboardButton::Keypad6;
+			case SDL_SCANCODE_KP_7: return input::KeyboardButton::Keypad7;
+			case SDL_SCANCODE_KP_8: return input::KeyboardButton::Keypad8;
+			case SDL_SCANCODE_KP_9: return input::KeyboardButton::Keypad9;
+			case SDL_SCANCODE_KP_DECIMAL: return input::KeyboardButton::KeypadDecimal;
+			case SDL_SCANCODE_KP_DIVIDE: return input::KeyboardButton::KeypadDivide;
+			case SDL_SCANCODE_KP_MULTIPLY: return input::KeyboardButton::KeypadMultiply;
+			case SDL_SCANCODE_KP_MINUS: return input::KeyboardButton::KeypadSubtract;
+			case SDL_SCANCODE_KP_PLUS: return input::KeyboardButton::KeypadAdd;
+			case SDL_SCANCODE_KP_ENTER: return input::KeyboardButton::KeypadEnter;
+			case SDL_SCANCODE_KP_EQUALS: return input::KeyboardButton::KeypadEqual;
 
-			case SDL_SCANCODE_PRINTSCREEN: return event::KeyboardButton::PrintScreen;
-			case SDL_SCANCODE_SCROLLLOCK: return event::KeyboardButton::ScrollLock;
-			case SDL_SCANCODE_PAUSE: return event::KeyboardButton::Pause;
-			case SDL_SCANCODE_MENU: return event::KeyboardButton::Menu;
+			case SDL_SCANCODE_PRINTSCREEN: return input::KeyboardButton::PrintScreen;
+			case SDL_SCANCODE_SCROLLLOCK: return input::KeyboardButton::ScrollLock;
+			case SDL_SCANCODE_PAUSE: return input::KeyboardButton::Pause;
+			case SDL_SCANCODE_MENU: return input::KeyboardButton::Menu;
 
 			default:
-				return event::KeyboardButton::Unknown;
+				return input::KeyboardButton::Unknown;
 		}
 	}
 
-	event::MouseButton Sdl3Window::toEngineMouse(std::uint8_t button) {
+	input::MouseButton Sdl3Window::toEngineMouse(std::uint8_t button) {
 		switch (button) {
-			case SDL_BUTTON_LEFT: return event::MouseButton::Left;
-			case SDL_BUTTON_RIGHT: return event::MouseButton::Right;
-			case SDL_BUTTON_MIDDLE: return event::MouseButton::Middle;
-			case SDL_BUTTON_X1: return event::MouseButton::Button4;
-			case SDL_BUTTON_X2: return event::MouseButton::Button5;
-			case 6: return event::MouseButton::Button6;
-			case 7: return event::MouseButton::Button7;
-			case 8: return event::MouseButton::Button8;
+			case SDL_BUTTON_LEFT: return input::MouseButton::Left;
+			case SDL_BUTTON_RIGHT: return input::MouseButton::Right;
+			case SDL_BUTTON_MIDDLE: return input::MouseButton::Middle;
+			case SDL_BUTTON_X1: return input::MouseButton::Button4;
+			case SDL_BUTTON_X2: return input::MouseButton::Button5;
+			case 6: return input::MouseButton::Button6;
+			case 7: return input::MouseButton::Button7;
+			case 8: return input::MouseButton::Button8;
 
 			default:
-				return event::MouseButton::Unknown;
+				return input::MouseButton::Unknown;
 		}
 	}
 }

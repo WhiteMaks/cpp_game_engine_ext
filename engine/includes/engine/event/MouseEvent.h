@@ -4,38 +4,25 @@
 
 #pragma once
 
-#include <cstdint>
+#include <engine/input/Mouse.h>
 
 namespace event {
-	enum class MouseButton : std::uint8_t
-	{
-		Unknown = 0,
-
-		Left,
-		Right,
-		Middle,
-
-		Button4,
-		Button5,
-		Button6,
-		Button7,
-		Button8
-	};
-
 	struct MouseMovedEvent
 	{
 		float x = 0.0f;
 		float y = 0.0f;
+		float deltaX = 0.0f;
+		float deltaY = 0.0f;
 	};
 
 	struct MouseButtonPressedEvent
 	{
-		MouseButton button = MouseButton::Unknown;
+		input::MouseButton button = input::MouseButton::Unknown;
 	};
 
 	struct MouseButtonReleasedEvent
 	{
-		MouseButton button = MouseButton::Unknown;
+		input::MouseButton button = input::MouseButton::Unknown;
 	};
 
 	struct MouseScrolledEvent
