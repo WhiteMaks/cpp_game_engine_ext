@@ -26,17 +26,21 @@ namespace input {
 		MouseBinding
 	>;
 
-	class InputContex {
+	class InputContext {
 	private:
-		std::unordered_map<std::string, std::vector<InputBinding>> _bindings;
+		std::unordered_map<std::string, std::vector<InputBinding>> _actions;
 
 	public:
-		void addBinding(std::string name, KeyboardButton button);
+		void addAction(std::string name, KeyboardButton button);
 
-		void addBinding(std::string name, MouseButton button);
+		void addAction(std::string name, MouseButton button);
 
-		void removeBinding(const std::string &name);
+		void removeAction(const std::string &name);
 
 		void destroy();
+
+		[[nodiscard]] bool hasAction(const std::string &name) const;
+
+		[[nodiscard]] const std::vector<InputBinding>& getActions(const std::string &name);
 	};
 }
