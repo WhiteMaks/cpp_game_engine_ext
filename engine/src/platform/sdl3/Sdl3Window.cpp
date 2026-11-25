@@ -11,8 +11,6 @@ namespace platform {
 	}
 
 	void Sdl3Window::init() {
-		SDL_SetHint(SDL_HINT_VIDEO_DRIVER, "x11");
-
 		if (!SDL_Init(SDL_INIT_VIDEO)) {
 			throw std::runtime_error(SDL_GetError());
 		}
