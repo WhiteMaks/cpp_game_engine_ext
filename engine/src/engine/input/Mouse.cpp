@@ -6,7 +6,7 @@
 
 namespace input {
 	void Mouse::beginFrame() {
-		for (ButtonState state : _buttonStates) {
+		for (ButtonState& state : _buttonStates) {
 			state.beginFrame();
 		}
 
@@ -15,7 +15,7 @@ namespace input {
 	}
 
 	void Mouse::endFrame() {
-		for (ButtonState state : _buttonStates) {
+		for (ButtonState& state : _buttonStates) {
 			state.endFrame();
 		}
 
@@ -55,7 +55,7 @@ namespace input {
 	}
 
 	void Mouse::reset() {
-		for (ButtonState state : _buttonStates) {
+		for (ButtonState& state : _buttonStates) {
 			state.reset();
 		}
 

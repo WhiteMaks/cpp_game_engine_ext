@@ -3,6 +3,7 @@
 //
 
 #include <memory>
+#include <iostream>
 
 #include <engine/WindowFactory.h>
 #include <engine/Application.h>
@@ -16,11 +17,28 @@ namespace {
 
 	protected:
 		void onInit() override {
+			input::InputActionMap& actionMap = getInputSystem().getInputActionMap();
 
+			input::InputContext& gameplay = actionMap.addContext("Gameplay");
+
+			gameplay.addAction(
+				"Fire",
+				input::MouseButton::Left
+			);
+
+			actionMap.setActiveContext("Gameplay");
 		}
 
 		void onUpdate() override {
+			auto& input = getInputSystem();
 
+			if (input.wasActionPressed("Fire")) {
+				std::cout << "One click detected" << std::endl;
+			}
+
+			if (input.isActionDown("Fire")) {
+				std::cout << "Pressed detected" << std::endl;
+			}
 		}
 
 		void onRender() override {

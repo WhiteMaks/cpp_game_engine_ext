@@ -12,8 +12,10 @@ namespace engine {
 
 	void ApplicationHost::run() {
 		_application.init();
+		_application.beginFrame();
 		_application.update();
 		_application.render();
+		_application.endFrame();
 		_application.destroy();
 	}
 }

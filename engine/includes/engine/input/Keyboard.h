@@ -101,15 +101,15 @@ namespace input {
 		std::array<ButtonState, ButtonCount> _buttonStates = {};
 
 	public:
-		void beginFrame() const;
+		void beginFrame();
 
-		void endFrame() const;
+		void endFrame();
 
 		void onButtonPressed(KeyboardButton button);
 
 		void onButtonReleased(KeyboardButton button);
 
-		void reset() const;
+		void reset();
 
 		[[nodiscard]] bool isButtonDown(KeyboardButton button) const;
 

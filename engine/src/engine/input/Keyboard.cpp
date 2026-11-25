@@ -5,14 +5,14 @@
 #include <engine/input/Keyboard.h>
 
 namespace input {
-	void Keyboard::beginFrame() const {
-		for (ButtonState state : _buttonStates) {
+	void Keyboard::beginFrame() {
+		for (ButtonState& state : _buttonStates) {
 			state.beginFrame();
 		}
 	}
 
-	void Keyboard::endFrame() const {
-		for (ButtonState state : _buttonStates) {
+	void Keyboard::endFrame() {
+		for (ButtonState& state : _buttonStates) {
 			state.endFrame();
 		}
 	}
@@ -29,8 +29,8 @@ namespace input {
 		}
 	}
 
-	void Keyboard::reset() const {
-		for (ButtonState state : _buttonStates) {
+	void Keyboard::reset() {
+		for (ButtonState& state : _buttonStates) {
 			state.reset();
 		}
 	}
