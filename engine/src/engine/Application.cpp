@@ -43,8 +43,24 @@ namespace engine
 		onDestroy();
 	}
 
+	void Application::beginFrame() {
+		_inputSystem.beginFrame();
+	}
+
+	void Application::endFrame() {
+		_inputSystem.endFrame();
+	}
+
 	bool Application::shouldClose() const {
 		return _shouldClose;
+	}
+
+	input::InputSystem & Application::getInputSystem() noexcept {
+		return _inputSystem;
+	}
+
+	const input::InputSystem & Application::getInputSystem() const noexcept {
+		return _inputSystem;
 	}
 
 	void Application::onInit() {
@@ -82,20 +98,26 @@ namespace engine
 	}
 
 	void Application::onEvent(const event::KeyboardButtonPressedEvent &event) {
+		_inputSystem.onEvent(event);
 	}
 
 	void Application::onEvent(const event::KeyboardButtonReleasedEvent &event) {
+		_inputSystem.onEvent(event);
 	}
 
 	void Application::onEvent(const event::MouseMovedEvent &event) {
+		_inputSystem.onEvent(event);
 	}
 
 	void Application::onEvent(const event::MouseButtonPressedEvent &event) {
+		_inputSystem.onEvent(event);
 	}
 
 	void Application::onEvent(const event::MouseButtonReleasedEvent &event) {
+		_inputSystem.onEvent(event);
 	}
 
 	void Application::onEvent(const event::MouseScrolledEvent &event) {
+		_inputSystem.onEvent(event);
 	}
 }

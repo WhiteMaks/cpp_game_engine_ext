@@ -7,11 +7,14 @@
 #include <memory>
 
 #include <engine/Window.h>
+#include <engine/input/InputSystem.h>
 
 namespace engine {
 	class Application {
 	private:
 		const std::unique_ptr<Window> _window;
+
+		input::InputSystem _inputSystem;
 
 		bool _shouldClose;
 
@@ -31,7 +34,15 @@ namespace engine {
 
 		void destroy();
 
-		bool shouldClose() const;
+		void beginFrame();
+
+		void endFrame();
+
+		[[nodiscard]] bool shouldClose() const;
+
+		[[nodiscard]] input::InputSystem& getInputSystem() noexcept;
+
+		[[nodiscard]] const input::InputSystem& getInputSystem() const noexcept;
 
 	protected:
 		void virtual onInit();

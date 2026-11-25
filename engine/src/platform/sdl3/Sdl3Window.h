@@ -24,8 +24,8 @@ namespace platform {
 		void destroy() override;
 
 	private:
-		static event::KeyboardButton toEngineKeyboard(SDL_Scancode key);
+		static input::KeyboardButton toEngineKeyboard(SDL_Scancode key);
 
-		static event::MouseButton toEngineMouse(std::uint8_t button);
+		static input::MouseButton toEngineMouse(std::uint8_t button);
 	};
 }

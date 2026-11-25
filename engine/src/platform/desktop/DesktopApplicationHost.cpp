@@ -13,9 +13,11 @@ namespace platform {
 		_application.init();
 
 		while (!_application.shouldClose()) {
+			_application.beginFrame();
 			_application.input();
 			_application.update();
 			_application.render();
+			_application.endFrame();
 		}
 
 		_application.destroy();

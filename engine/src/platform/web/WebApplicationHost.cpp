@@ -32,8 +32,10 @@ namespace platform {
 			return;
 		}
 
+		instance->_application.beginFrame();
 		instance->_application.input();
 		instance->_application.update();
 		instance->_application.render();
+		instance->_application.endFrame();
 	}
 }
